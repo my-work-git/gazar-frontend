@@ -1,0 +1,24 @@
+image: node:10.14.2
+
+# And to cache them as well.
+cache:
+  paths:
+    - node_modules/
+    - .yarn
+
+before_script:
+  - apt-get update -qq && apt-get install
+
+
+stages:
+  - test
+
+Test:
+  stage: test
+  tags:
+    - node
+  before_script:
+    - yarn config set cache-folder .yarn
+    - yarn install
+  script:
+    - npm run test

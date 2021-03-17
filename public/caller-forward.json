@@ -1,0 +1,8 @@
+{
+  "phoneNumbers": [
+    {
+      "phoneNumber": "055250676",
+      "from": 9, "to": 18, "days": [1, 2, 3, 4, 5]
+    }
+  ]
+}

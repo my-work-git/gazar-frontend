@@ -1,0 +1,154 @@
+{
+  "name": "gazar-web",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "apollo-cache-inmemory": "^1.2.6",
+    "apollo-client": "^2.3.7",
+    "apollo-link": "^1.2.2",
+    "apollo-link-error": "^1.1.0",
+    "apollo-link-http": "^1.5.4",
+    "apollo-link-ws": "^1.0.8",
+    "apollo-utilities": "^1.0.17",
+    "autoprefixer": "7.1.6",
+    "babel-core": "6.26.0",
+    "babel-eslint": "8.1.1",
+    "babel-jest": "20.0.3",
+    "babel-loader": "7.1.2",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-react-app": "^3.1.1",
+    "babel-runtime": "6.26.0",
+    "bootstrap": "^4.6.0",
+    "case-sensitive-paths-webpack-plugin": "2.1.1",
+    "chalk": "1.1.3",
+    "classnames": "^2.2.6",
+    "cross-env": "^5.2.0",
+    "css-loader": "0.28.7",
+    "dotenv": "4.0.0",
+    "dotenv-expand": "4.2.0",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-import-resolver-babel-module": "^4.0.0",
+    "eslint-loader": "^2.1.0",
+    "eslint-plugin-flowtype": "2.39.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "extract-text-webpack-plugin": "3.0.2",
+    "file-loader": "1.1.5",
+    "fs-extra": "3.0.1",
+    "graphql": "^0.13.2",
+    "graphql-tag": "^2.9.2",
+    "html-webpack-plugin": "2.29.0",
+    "jest": "^23.6.0",
+    "lodash.debounce": "^4.0.8",
+    "moment": "^2.29.1",
+    "object-assign": "4.1.1",
+    "postcss-flexbugs-fixes": "3.2.0",
+    "postcss-loader": "2.0.8",
+    "promise": "8.0.1",
+    "prop-types": "^15.6.2",
+    "raf": "3.4.0",
+    "react": "^16.4.0",
+    "react-apollo": "^2.1.9",
+    "react-autosuggest": "^9.4.3",
+    "react-custom-scrollbars": "^4.2.1",
+    "react-datepicker": "^2.0.0",
+    "react-dev-utils": "^5.0.1",
+    "react-dom": "^16.4.0",
+    "react-facebook-login": "^4.1.1",
+    "react-helmet": "^5.2.0",
+    "react-image-gallery": "^0.8.12",
+    "react-markdown": "^4.0.3",
+    "react-modal": "^3.5.1",
+    "react-phone-number-input": "^2.3.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "react-slick": "^0.23.2",
+    "react-sticky": "^6.0.3",
+    "reactstrap": "^6.1.0",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "resolve": "1.6.0",
+    "store": "^2.0.12",
+    "style-loader": "0.19.0",
+    "subscriptions-transport-ws": "^0.9.14",
+    "sw-precache-webpack-plugin": "0.11.4",
+    "url-loader": "0.6.2",
+    "webpack": "3.8.1",
+    "webpack-dev-server": "2.9.4",
+    "webpack-manifest-plugin": "1.3.2",
+    "whatwg-fetch": "2.0.3"
+  },
+  "scripts": {
+    "start": "cross-env REACT_APP_WS_HOST='wss://gazar-api.herokuapp.com' node scripts/start.js",
+    "https": "cross-env REACT_APP_WS_HOST='wss://gazar-api.herokuapp.com' HTTPS='true' node scripts/start.js",
+    "local": "cross-env node scripts/start.js",
+    "https-local": "cross-env HTTPS='true' node scripts/start.js",
+    "build": "cross-env npm run build-client && npm run build-server ",
+    "copy": "&& COPY build/index.html functions/build/index.html",
+    "build-server": "cross-env REACT_APP_BUILD_SERVER=1 NODE_ENV='production' REACT_APP_USE_HTTP=1 REACT_APP_WS_HOST='https://gazar-api.herokuapp.com' node scripts/build.js",
+    "build-client": "cross-env REACT_APP_USE_HTTP=1 REACT_APP_WS_HOST='https://gazar-api.herokuapp.com' NODE_ENV='production' node scripts/build.js",
+    "test": "cross-env jest --verbose --env=jsdom",
+    "lint": "cross-env eslint ./",
+    "deploy-full": "cross-env rm -rf build functions/build &&  npm run build && firebase deploy -P gazar-am",
+    "deploy": "cross-env rm -rf build && npm run build-client && firebase deploy -P gazar-am --only hosting"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
+    "chai": "^4.2.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "eslint-config-prettier": "^2.8.0",
+    "eslint-plugin-prefer-object-spread": "^1.1.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "prettier": "^1.8.2",
+    "prettier-eslint": "^8.2.2"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,mjs}"
+    ],
+    "setupFiles": [
+      "<rootDir>/config/polyfills.js"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
+      "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
+    ],
+    "testEnvironment": "node",
+    "testURL": "http://localhost",
+    "transform": {
+      "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
+    ],
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web"
+    },
+    "moduleFileExtensions": [
+      "web.js",
+      "js",
+      "json",
+      "web.jsx",
+      "jsx",
+      "node",
+      "mjs"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ],
+    "plugins": [
+      "transform-decorators-legacy",
+      "transform-class-properties"
+    ]
+  }
+}
